@@ -1,5 +1,5 @@
 """
-EFADT — RC Thermal Simulator for Data Generation
+XFADT — RC Thermal Simulator for Data Generation
 ==================================================
 Implements the first-order RC (Resistance-Capacitance) thermal model:
 

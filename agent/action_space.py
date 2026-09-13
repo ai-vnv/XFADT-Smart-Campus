@@ -1,5 +1,5 @@
 """
-EFADT — Action Space Definition
+XFADT — Action Space Definition
 =================================
 Defines the discrete action set U_b for each building node.
 

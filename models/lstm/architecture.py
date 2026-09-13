@@ -1,5 +1,5 @@
 """
-EFADT — OccupancyLSTM Architecture
+XFADT — OccupancyLSTM Architecture
 =====================================
 2-layer LSTM for occupancy forecasting at the edge node.
   - Input:  lookback_steps × n_features (12 × 14)

@@ -36,7 +36,7 @@ import yaml
 from models.lstm.train_local import (
     load_checkpoint, prepare_data, evaluate_local, FEATURE_COLUMNS, TARGET_COLUMN
 )
-from evaluation.metrics import compute_all_metrics, EFADTMetrics
+from evaluation.metrics import compute_all_metrics, XFADTMetrics
 from digital_twin.simulator import DigitalTwinSimulator
 from digital_twin.thermal_model import BuildingThermalParams, ThermalState
 from agent.action_space import build_action_space, get_hvac_powers
@@ -112,7 +112,7 @@ def evaluate_single_variant(
     skip_fl: bool = False,
     force_zero_trust: bool = False,
     step_factor: int = 1,
-) -> EFADTMetrics:
+) -> XFADTMetrics:
     """Evaluate one ablation variant on all buildings and aggregate metrics."""
     all_preds, all_true = [], []
     all_T_in, all_co2, all_occ = [], [], []
@@ -243,7 +243,7 @@ def main():
     parser.add_argument("--centralized-epochs", type=int, default=50)
     parser.add_argument("--n-rounds", type=int, default=None)
     parser.add_argument("--variant", default=None, choices=[
-        "EFADT (Full)", "EFADT", "full", "-XAI", "no_xai", "-DT-WIF", "dt_only",
+        "XFADT (Full)", "XFADT", "full", "-XAI", "no_xai", "-DT-WIF", "dt_only",
         "-DP", "no_dp", "-MOO (energy-only)", "energy_only", "-FL (centralized)",
         "centralized", "Rule-Based", "rule_based"
     ], help="Run only a specific evaluation variant")
@@ -276,8 +276,8 @@ def main():
     target_variant = None
     if variant:
         v_lower = variant.lower()
-        if "full" in v_lower or "efadt" in v_lower:
-            target_variant = "EFADT (Full)"
+        if "full" in v_lower or "xfadt" in v_lower:
+            target_variant = "XFADT (Full)"
         elif "xai" in v_lower:
             target_variant = "-XAI"
         elif "dt" in v_lower:
@@ -293,11 +293,11 @@ def main():
 
     results = {}
 
-    # 1. Full EFADT
-    if target_variant is None or target_variant == "EFADT (Full)":
-        logger.info("Evaluating EFADT (Full)...")
-        results["EFADT (Full)"] = evaluate_single_variant(
-            "EFADT (Full)", building_data, args.checkpoint_dir,
+    # 1. Full XFADT
+    if target_variant is None or target_variant == "XFADT (Full)":
+        logger.info("Evaluating XFADT (Full)...")
+        results["XFADT (Full)"] = evaluate_single_variant(
+            "XFADT (Full)", building_data, args.checkpoint_dir,
             config, building_cfg, test_months, device, step_factor=args.step_factor
         ).to_dict()
 
@@ -470,7 +470,7 @@ def main():
     try:
         import mlflow
         mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "file:./mlruns"))
-        mlflow.set_experiment(os.getenv("MLFLOW_EXPERIMENT_NAME", "efadt-campus"))
+        mlflow.set_experiment(os.getenv("MLFLOW_EXPERIMENT_NAME", "xfadt-campus"))
 
         with mlflow.start_run(run_name=f"eval_seed{args.seed}"):
             # Log hyperparameters/config info

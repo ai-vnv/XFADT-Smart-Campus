@@ -1,5 +1,5 @@
 """
-EFADT — Federated Aggregation Server
+XFADT — Federated Aggregation Server
 ======================================
 Implements the FedAvg aggregation server with differential privacy.
 
@@ -27,7 +27,7 @@ from flwr.server.strategy import FedAvg
 logger = logging.getLogger(__name__)
 
 
-class EFADTFedAvgStrategy(FedAvg):
+class XFADTFedAvgStrategy(FedAvg):
     """
     Custom FedAvg strategy with:
       - Convergence monitoring (MAE threshold)
@@ -169,9 +169,9 @@ def build_server_strategy(
     config: dict,
     checkpoint_dir: str = "models/lstm/checkpoints",
     n_clients: int = None
-) -> EFADTFedAvgStrategy:
+) -> XFADTFedAvgStrategy:
     """
-    Build the EFADT FedAvg strategy from config.
+    Build the XFADT FedAvg strategy from config.
 
     Parameters
     ----------
@@ -184,7 +184,7 @@ def build_server_strategy(
 
     Returns
     -------
-    EFADTFedAvgStrategy
+    XFADTFedAvgStrategy
     """
     fl_cfg = config["federated"]
     min_fit = fl_cfg["min_fit_clients"]
@@ -196,7 +196,7 @@ def build_server_strategy(
         min_eval = min(min_eval, n_clients)
         min_avail = min(min_avail, n_clients)
 
-    strategy = EFADTFedAvgStrategy(
+    strategy = XFADTFedAvgStrategy(
         convergence_mae_threshold=fl_cfg["convergence_mae_threshold"],
         checkpoint_dir=checkpoint_dir,
         fraction_fit=fl_cfg["fraction_fit"],

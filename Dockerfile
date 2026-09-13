@@ -1,7 +1,7 @@
 FROM python:3.11-slim
 
-LABEL maintainer="ali@efadt-campus.ai"
-LABEL description="EFADT Smart Campus Resource Optimizer"
+LABEL maintainer="ali@xfadt-campus.ai"
+LABEL description="XFADT Smart Campus Resource Optimizer"
 LABEL version="1.0.0"
 
 # System dependencies

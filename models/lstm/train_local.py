@@ -1,5 +1,5 @@
 """
-EFADT — Local LSTM Training (Single Building Node)
+XFADT — Local LSTM Training (Single Building Node)
 ====================================================
 Trains the OccupancyLSTM on a single building's data.
 Used both for:

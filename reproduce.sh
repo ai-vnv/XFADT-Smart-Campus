@@ -2,7 +2,7 @@
 set -e
 
 echo "=============================================================="
-echo "EFADT-Smart-Campus: Final Reproducibility Certification"
+echo "XFADT-Smart-Campus: Final Reproducibility Certification"
 echo "=============================================================="
 
 echo "[1/6] Verifying environment..."

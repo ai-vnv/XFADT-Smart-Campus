@@ -1,7 +1,7 @@
 """
-EFADT — Trust Score Computation
+XFADT — Trust Score Computation
 =================================
-Implements EFADT Eq. (5) — Quantitative Trust Score:
+Implements XFADT Eq. (5) — Quantitative Trust Score:
 
     τ(u*) = η₁ · (Σ_{φⱼ>0} φⱼ / Σ|φⱼ|)  ← SHAP coherence
            + η₂ · C(u*)                    ← comfort alignment
@@ -10,7 +10,7 @@ Implements EFADT Eq. (5) — Quantitative Trust Score:
 where η₁ = 0.5, η₂ = 0.3, η₃ = 0.2 (sum to 1.0)
 
 τ ∈ [0, 1], higher = more trustworthy decision.
-EFADT achieves τ = 0.887 on average across 12 months.
+XFADT achieves τ = 0.887 on average across 12 months.
 """
 
 from __future__ import annotations
@@ -93,7 +93,7 @@ def compute_trust_score(
     alert_threshold: float = 0.7,
 ) -> TrustScoreResult:
     """
-    Compute the quantitative trust score τ(u*) per EFADT Eq. (5).
+    Compute the quantitative trust score τ(u*) per XFADT Eq. (5).
 
     Parameters
     ----------
@@ -104,7 +104,7 @@ def compute_trust_score(
     D_u_star : float
         Crowd density risk of the selected action ∈ [0, 1].
     weights : TrustWeights, optional
-        η₁, η₂, η₃ coefficients. Defaults to EFADT paper values.
+        η₁, η₂, η₃ coefficients. Defaults to XFADT paper values.
     alert_threshold : float
         τ below this triggers a human review flag.
 
@@ -154,7 +154,7 @@ def aggregate_trust_scores(trust_scores: list[float]) -> dict:
 if __name__ == "__main__":
     rng = np.random.default_rng(42)
 
-    # Simulate EFADT typical case
+    # Simulate XFADT typical case
     shap_vals = rng.normal(0, 0.3, 14)
     C = 0.92   # High comfort compliance
     D = 0.40   # Moderate crowd density

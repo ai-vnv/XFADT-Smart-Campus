@@ -1,5 +1,5 @@
 # ============================================================
-# EFADT — Makefile
+# XFADT — Makefile
 # ============================================================
 .PHONY: help setup generate-data train-fl test smoke lint api dashboard clean zip validate-data update-readme ci
 
@@ -11,7 +11,7 @@ SEED     ?= 42
 
 help:
 	@echo ""
-	@echo "EFADT — Smart Campus Resource Optimizer"
+	@echo "XFADT — Smart Campus Resource Optimizer"
 	@echo "========================================"
 	@echo ""
 	@echo "  make setup           Install dependencies"
@@ -160,7 +160,7 @@ clean:
 	find . -type f -name "*.pyc" -delete
 
 zip:
-	cd /home/claude && zip -r efadt-smart-campus.zip efadt-smart-campus/ \
+	cd /home/claude && zip -r xfadt-smart-campus.zip xfadt-smart-campus/ \
 	  --exclude "*.pyc" --exclude "__pycache__/*" --exclude "*.parquet" \
 	  --exclude "*.pt" --exclude "*.pkl" --exclude "data/audit/*"
-	@echo "Archive created: /home/claude/efadt-smart-campus.zip"
+	@echo "Archive created: /home/claude/xfadt-smart-campus.zip"

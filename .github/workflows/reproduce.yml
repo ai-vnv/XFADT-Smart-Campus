@@ -1,4 +1,4 @@
-name: EFADT Full Reproduce
+name: XFADT Full Reproduce
 
 on:
   schedule:

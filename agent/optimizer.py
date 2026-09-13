@@ -1,5 +1,5 @@
 """
-EFADT — Agent Optimizer
+XFADT — Agent Optimizer
 =========================
 Orchestrates the full agent decision procedure for one building node
 per 30-second decision cycle (Algorithm 1, Steps 5–6).
@@ -28,7 +28,7 @@ from digital_twin.thermal_model import ThermalState
 logger = logging.getLogger(__name__)
 
 
-class EFADTAgent:
+class XFADTAgent:
     """
     Utility-driven multi-objective agent for one building node.
 
@@ -131,7 +131,7 @@ class EFADTAgent:
         building_id: str,
         simulator: DigitalTwinSimulator,
         config: dict,
-    ) -> "EFADTAgent":
+    ) -> "XFADTAgent":
         """Build agent from hyperparameter config dict."""
         import yaml
         weights_cfg = config.get("agent", {})
@@ -151,7 +151,7 @@ if __name__ == "__main__":
     # Set up simulator
     params = BuildingThermalParams(alpha=0.0018, beta=0.011, gamma=0.009)
     sim = DigitalTwinSimulator("B01", params=params, H=6, o_max=80, P_cap=25.0)
-    agent = EFADTAgent("B01", sim)
+    agent = XFADTAgent("B01", sim)
 
     # Simulate a hot day with high occupancy
     state = ThermalState(T_in=27.0, T_out=40.0, Q_hvac=0.0, occupancy=60)

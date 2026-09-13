@@ -1,5 +1,5 @@
 """
-EFADT — Flower Federated Learning Client
+XFADT — Flower Federated Learning Client
 ==========================================
 Implements the Flower NumPyClient interface for each building node.
 
@@ -37,7 +37,7 @@ FitResult = Tuple[Parameters, int, Metrics]
 EvalResult = Tuple[float, int, Metrics]
 
 
-class EFADTClient(fl.client.NumPyClient):
+class XFADTClient(fl.client.NumPyClient):
     """
     Flower NumPyClient for a single building node.
 
@@ -212,12 +212,12 @@ def create_client_fn(
 
     Returns
     -------
-    Callable[[str], EFADTClient]
+    Callable[[str], XFADTClient]
     """
-    def client_fn(cid: str) -> EFADTClient:
+    def client_fn(cid: str) -> XFADTClient:
         building_id = list(building_data.keys())[int(cid)]
         df = building_data[building_id]
-        return EFADTClient(
+        return XFADTClient(
             building_id=building_id,
             df=df,
             config=config,

@@ -1,5 +1,5 @@
 """
-EFADT — Main Dataset Generation Script
+XFADT — Main Dataset Generation Script
 ========================================
 Generates the synthetic smart campus dataset:
   - 12 buildings × 12 months × 30s = ~12.6M records
@@ -253,7 +253,7 @@ def _create_scenario_splits(df: pd.DataFrame, cfg: dict) -> None:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate EFADT synthetic dataset")
+    parser = argparse.ArgumentParser(description="Generate XFADT synthetic dataset")
     parser.add_argument("--config", default="configs/hyperparams.yaml")
     parser.add_argument("--building-config", default="configs/building_params.yaml")
     parser.add_argument("--output-dir", default="data/raw")

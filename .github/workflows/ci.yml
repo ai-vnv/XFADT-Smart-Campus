@@ -1,4 +1,4 @@
-name: EFADT CI
+name: XFADT CI
 
 on:
   push:
@@ -63,10 +63,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build Docker image
-        run: docker build -t efadt-smart-campus:${{ github.sha }} .
+        run: docker build -t xfadt-smart-campus:${{ github.sha }} .
       - name: Test container health
         run: |
-          docker run -d --name efadt-test -p 8000:8000 efadt-smart-campus:${{ github.sha }}
+          docker run -d --name xfadt-test -p 8000:8000 xfadt-smart-campus:${{ github.sha }}
           sleep 15
           curl -f http://localhost:8000/health
-          docker stop efadt-test
+          docker stop xfadt-test

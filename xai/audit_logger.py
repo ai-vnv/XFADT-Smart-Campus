@@ -1,5 +1,5 @@
 """
-EFADT — Tamper-Evident Audit Ledger
+XFADT — Tamper-Evident Audit Ledger
 =====================================
 Appends every agent decision to a governance audit log.
 

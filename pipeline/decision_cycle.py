@@ -1,5 +1,5 @@
 """
-EFADT — Full 30-Second Decision Cycle Orchestrator
+XFADT — Full 30-Second Decision Cycle Orchestrator
 ====================================================
 Implements Algorithm 1 in its entirety for one building node.
 
@@ -22,7 +22,7 @@ import numpy as np
 import torch
 
 from agent.action_space import BuildingAction
-from agent.optimizer import EFADTAgent
+from agent.optimizer import XFADTAgent
 from digital_twin.simulator import DigitalTwinSimulator, ActionScore
 from digital_twin.thermal_model import ThermalState
 from models.lstm.architecture import OccupancyLSTM
@@ -51,14 +51,14 @@ class DecisionCycleOutput:
 
 class DecisionCycle:
     """
-    Full EFADT per-building decision cycle.
+    Full XFADT per-building decision cycle.
 
     Parameters
     ----------
     building_id : str
     lstm_model : OccupancyLSTM
     simulator : DigitalTwinSimulator
-    agent : EFADTAgent
+    agent : XFADTAgent
     shap_explainer : SHAPProxyExplainer
     trust_weights : TrustWeights
     audit_logger : JSONLAuditLogger or SQLiteAuditLogger
@@ -76,7 +76,7 @@ class DecisionCycle:
         building_id: str,
         lstm_model: OccupancyLSTM,
         simulator: DigitalTwinSimulator,
-        agent: EFADTAgent,
+        agent: XFADTAgent,
         shap_explainer: SHAPProxyExplainer,
         trust_weights: Optional[TrustWeights] = None,
         audit_logger=None,

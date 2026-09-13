@@ -67,7 +67,7 @@ def test_evaluate_checkpoint_produces_metrics(mini_dataset, trained_checkpoint, 
         "--config", "configs/hyperparams.yaml",
         "--building-config", "configs/building_params.yaml",
         "--output", output,
-        "--variant", "EFADT (Full)",
+        "--variant", "XFADT (Full)",
     ], capture_output=True, text=True)
     assert result.returncode == 0, f"evaluate_checkpoint.py failed:\n{result.stderr}"
     with open(output) as f:

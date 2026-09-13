@@ -1,5 +1,5 @@
 """
-EFADT — Digital Twin H-Step What-If Simulator
+XFADT — Digital Twin H-Step What-If Simulator
 ===============================================
 Wraps the RCThermalModel for pre-execution simulation of all candidate actions.
 

@@ -6,7 +6,7 @@ Runs all ablation variants for a given seed and produces
 results/ablation/ablation_seed{seed}.json.
 
 Variants:
-  EFADT (Full)           — Full EFADT with DP, XAI, DT
+  XFADT (Full)           — Full XFADT with DP, XAI, DT
   -XAI                   — Trust score not displayed (τ = 0)
   -DT-WIF (DT-only)      — Naive persistence forecast, rule-based HVAC
   -DP                    — FL without Differential Privacy
@@ -116,11 +116,11 @@ def main():
     no_dp_results = eval_variant(
         ckpt_no_dp, 
         no_dp_output, 
-        extra_flags=["--variant", "EFADT (Full)"]
+        extra_flags=["--variant", "XFADT (Full)"]
     )
     
     # Overwrite the -DP fallback with the actual evaluated no-DP metrics
-    results["-DP"] = no_dp_results.get("results", {}).get("EFADT (Full)", {})
+    results["-DP"] = no_dp_results.get("results", {}).get("XFADT (Full)", {})
 
     # Write the consolidated ablation result
     output_path = f"{args.output_dir}/ablation_seed{args.seed}.json"

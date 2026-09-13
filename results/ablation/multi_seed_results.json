@@ -5,7 +5,7 @@
   ],
   "n_seeds": 2,
   "aggregated": {
-    "EFADT (Full)": {
+    "XFADT (Full)": {
       "ERR": {
         "mean": 44.0841,
         "std": 0.0,
@@ -371,42 +371,42 @@
     }
   },
   "significance_tests": {
-    "EFADT (Full) vs -XAI": {
+    "XFADT (Full) vs -XAI": {
       "metric": "MAE",
       "wilcoxon_stat": 0.0,
       "p_value": 1.0,
       "cohens_d": 0.0,
       "significant_p05": false
     },
-    "EFADT (Full) vs -DT-WIF": {
+    "XFADT (Full) vs -DT-WIF": {
       "metric": "MAE",
       "wilcoxon_stat": 0.0,
       "p_value": 0.5,
       "cohens_d": 7.8787,
       "significant_p05": false
     },
-    "EFADT (Full) vs -DP": {
+    "XFADT (Full) vs -DP": {
       "metric": "MAE",
       "wilcoxon_stat": 1.0,
       "p_value": 1.0,
       "cohens_d": -0.808,
       "significant_p05": false
     },
-    "EFADT (Full) vs -MOO (energy-only)": {
+    "XFADT (Full) vs -MOO (energy-only)": {
       "metric": "MAE",
       "wilcoxon_stat": 0.0,
       "p_value": 1.0,
       "cohens_d": 0.0,
       "significant_p05": false
     },
-    "EFADT (Full) vs -FL (centralized)": {
+    "XFADT (Full) vs -FL (centralized)": {
       "metric": "MAE",
       "wilcoxon_stat": 0.0,
       "p_value": 0.5,
       "cohens_d": -1.162,
       "significant_p05": false
     },
-    "EFADT (Full) vs Rule-Based": {
+    "XFADT (Full) vs Rule-Based": {
       "metric": "MAE",
       "wilcoxon_stat": 0.0,
       "p_value": 0.5,

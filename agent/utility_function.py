@@ -1,7 +1,7 @@
 """
-EFADT — Multi-Objective Utility Function
+XFADT — Multi-Objective Utility Function
 ==========================================
-Implements the agent's decision criterion (EFADT Eq. Section 5.5):
+Implements the agent's decision criterion (XFADT Eq. Section 5.5):
 
     u* = argmin_{u ∈ U_b^feas} [λ_e·E(u) - λ_c·C(u) + λ_d·D(u)]
 

@@ -1,5 +1,5 @@
 """
-EFADT — Baseline Evaluation Runner
+XFADT — Baseline Evaluation Runner
 =====================================
 Implements all four comparison baselines from Section 8:
 
@@ -8,7 +8,7 @@ Implements all four comparison baselines from Section 8:
   3. DT-Only          : Digital twin with rule-based (non-federated) controller
   4. Rule-Based       : Threshold-based HVAC controller (no ML, no DT)
 
-Each baseline is evaluated on the same test split as EFADT,
+Each baseline is evaluated on the same test split as XFADT,
 using identical metrics: ERR, CCS, CSS, MAE, τ.
 """
 from __future__ import annotations
@@ -27,7 +27,7 @@ import numpy as np
 import torch
 from sklearn.preprocessing import StandardScaler
 
-from evaluation.metrics import EFADTMetrics, compute_all_metrics
+from evaluation.metrics import XFADTMetrics, compute_all_metrics
 
 logger = logging.getLogger(__name__)
 
@@ -62,7 +62,7 @@ def evaluate_rule_based(
     co2_series: np.ndarray,
     setpoint: float = 22.0,
     o_max: float | np.ndarray = 80.0,
-) -> EFADTMetrics:
+) -> XFADTMetrics:
     """Evaluate rule-based thermostat baseline with naive persistence occupancy forecast."""
     n = len(T_in_series)
     hvac_energy = np.array([
@@ -153,7 +153,7 @@ def evaluate_centralized(
     seed: int = 42,
     device=None,
     epochs: int = 50,
-) -> EFADTMetrics:
+) -> XFADTMetrics:
     """
     Centralized NN baseline: pool all building data, train on train split,
     evaluate on test split. Privacy-violating but provides a performance ceiling.
@@ -338,7 +338,7 @@ def evaluate_dt_only(
     beta: float = 0.011,
     gamma: float = 0.009,
     o_max: float | np.ndarray = 80.0,
-) -> EFADTMetrics:
+) -> XFADTMetrics:
     """DT-Only baseline: thermal model + naive persistence occupancy forecast."""
     from digital_twin.thermal_model import RCThermalModel, BuildingThermalParams
 
@@ -398,7 +398,7 @@ import warnings
 # after completing Phase 5 of REMEDIATION_PLAN.md.
 # ──────────────────────────────────────────────────────────────────────────────
 _PAPER_RESULTS_UNVERIFIED = {
-    "EFADT (Full)":       {"ERR": None, "CCS": None, "CSS": None, "MAE": None, "tau": None},
+    "XFADT (Full)":       {"ERR": None, "CCS": None, "CSS": None, "MAE": None, "tau": None},
     "-XAI":               {"ERR": None, "CCS": None, "CSS": None, "MAE": None, "tau": None},
     "-DT-WIF":            {"ERR": None, "CCS": None, "CSS": None, "MAE": None, "tau": None},
     "-DP":                {"ERR": None, "CCS": None, "CSS": None, "MAE": None, "tau": None},

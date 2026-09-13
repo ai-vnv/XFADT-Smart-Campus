@@ -1,5 +1,5 @@
 """
-EFADT — Sensor Fault Injector
+XFADT — Sensor Fault Injector
 ==============================
 Simulates the 'Failure' operational scenario by randomly dropping 20% of sensor
 nodes and filling missing values with the last known good reading (hold-last-value).

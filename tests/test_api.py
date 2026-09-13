@@ -1,5 +1,5 @@
 """
-EFADT — API Integration Tests
+XFADT — API Integration Tests
 ================================
 Tests the FastAPI endpoints using httpx async client.
 """
@@ -106,7 +106,7 @@ def test_metrics_summary(client):
     resp = client.get("/metrics/summary")
     assert resp.status_code == 200
     data = resp.json()
-    assert "EFADT (Full)" in data["paper_results"]
+    assert "XFADT (Full)" in data["paper_results"]
 
 
 def test_audit_log_empty(client):

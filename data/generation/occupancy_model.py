@@ -1,5 +1,5 @@
 """
-EFADT — Occupancy Generation Model
+XFADT — Occupancy Generation Model
 ===================================
 Implements a Poisson mixture model for synthetic campus occupancy generation.
 Accounts for:

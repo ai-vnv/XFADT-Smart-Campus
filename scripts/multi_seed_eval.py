@@ -118,7 +118,7 @@ def aggregate_seeds(seed_results: list[dict]) -> dict:
     return aggregated
 
 
-def significance_tests(aggregated: dict, reference: str = "EFADT (Full)") -> dict:
+def significance_tests(aggregated: dict, reference: str = "XFADT (Full)") -> dict:
     """
     Wilcoxon signed-rank test between reference variant and each other variant.
     Reports p-value and Cohen's d effect size.

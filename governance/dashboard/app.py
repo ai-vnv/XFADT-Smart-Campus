@@ -1,5 +1,5 @@
 """
-EFADT — Governance & Monitoring Dashboard
+XFADT — Governance & Monitoring Dashboard
 ==========================================
 Streamlit-based real-time dashboard showing:
   - Live trust score heatmap across all buildings
@@ -28,7 +28,7 @@ import streamlit as st
 
 # ── Page Config ──────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="EFADT Campus Dashboard",
+    page_title="XFADT Campus Dashboard",
     page_icon="🏛️",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -84,13 +84,13 @@ def get_time_series_data(building_id: str, n_points: int = 100):
         "hvac_kw": rng.uniform(-22, 5, n_points),
         "trust_score": rng.uniform(0.78, 0.96, n_points),
         "energy_baseline_kw": np.full(n_points, 25.0),
-        "energy_efadt_kw": rng.uniform(14, 18, n_points),
+        "energy_xfadt_kw": rng.uniform(14, 18, n_points),
     })
 
 
 # ── Sidebar ──────────────────────────────────────────────────────────────────
 
-st.sidebar.title("🏛️ EFADT Dashboard")
+st.sidebar.title("🏛️ XFADT Dashboard")
 st.sidebar.markdown("**Smart Campus Resource Optimizer**")
 st.sidebar.markdown("---")
 
@@ -120,7 +120,7 @@ st.sidebar.markdown(f"λ_e=0.5 | λ_c=0.35 | λ_d=0.15")
 
 # ── Main ─────────────────────────────────────────────────────────────────────
 
-st.title("🏛️ EFADT — Smart Campus Resource Optimization")
+st.title("🏛️ XFADT — Smart Campus Resource Optimization")
 st.caption(f"Scenario: **{scenario}** | Building: **{selected_building} — {BUILDING_NAMES[selected_building]}**")
 
 df_live = get_live_metrics()
@@ -188,8 +188,8 @@ with col2:
         fig_e.add_trace(go.Scatter(x=df_ts["timestamp"], y=df_ts["energy_baseline_kw"],
                                     name="Baseline", fill="tozeroy", fillcolor="rgba(255,100,100,0.2)",
                                     line=dict(color="red", dash="dash")))
-        fig_e.add_trace(go.Scatter(x=df_ts["timestamp"], y=df_ts["energy_efadt_kw"],
-                                    name="EFADT", fill="tozeroy", fillcolor="rgba(50,200,50,0.2)",
+        fig_e.add_trace(go.Scatter(x=df_ts["timestamp"], y=df_ts["energy_xfadt_kw"],
+                                    name="XFADT", fill="tozeroy", fillcolor="rgba(50,200,50,0.2)",
                                     line=dict(color="green")))
         fig_e.update_layout(height=220, margin=dict(t=5, b=5), legend=dict(orientation="h"))
         st.plotly_chart(fig_e, use_container_width=True)
@@ -248,7 +248,7 @@ with col4:
     df_ablation = pd.DataFrame(ablation_data)
 
     def style_best(val):
-        return "background-color: #d4edda" if "EFADT (Full)" in str(val) else ""
+        return "background-color: #d4edda" if "XFADT (Full)" in str(val) else ""
 
     st.dataframe(df_ablation, use_container_width=True, height=280)
 
@@ -278,7 +278,7 @@ _results_path = Path("results/ablation/full_results.json")
 try:
     with open(_results_path) as _f:
         _r = json.load(_f)
-    _full = _r.get("results", {}).get("EFADT (Full)", {})
+    _full = _r.get("results", {}).get("XFADT (Full)", {})
     _footer_metrics = (
         f"ERR={_full.get('ERR', 'N/A'):.1f}% | "
         f"CCS={_full.get('CCS', 'N/A'):.3f} | "
@@ -291,7 +291,7 @@ except (FileNotFoundError, KeyError, TypeError, AttributeError):
 
 
 st.caption(
-    "EFADT — Explainable Federated Agentic Digital Twin | "
+    "XFADT — Explainable Federated Agentic Digital Twin | "
     f"ε=1.0, δ=1e-5 | σ=4.845 | 12 Buildings | FL Rounds: 100 | "
     + _footer_metrics
 )

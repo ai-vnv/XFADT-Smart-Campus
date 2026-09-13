@@ -1,5 +1,5 @@
 """
-EFADT — Core Test Suite
+XFADT — Core Test Suite
 ========================
 Tests for:
   - Data generation (occupancy, thermal, faults)

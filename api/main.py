@@ -1,7 +1,7 @@
 """
-EFADT — FastAPI REST Backend
+XFADT — FastAPI REST Backend
 ==============================
-Exposes the EFADT system via a REST API for:
+Exposes the XFADT system via a REST API for:
   - Real-time decision queries per building
   - Audit log retrieval
   - Trust score monitoring
@@ -41,7 +41,7 @@ _state: dict = {}
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Load models and config on startup."""
-    logger.info("EFADT API starting up...")
+    logger.info("XFADT API starting up...")
     config_path = os.getenv("CONFIG_PATH", "configs/hyperparams.yaml")
     building_config_path = os.getenv("BUILDING_CONFIG", "configs/building_params.yaml")
 
@@ -92,14 +92,14 @@ async def lifespan(app: FastAPI):
 
     _state["trust_weights"] = TrustWeights.from_config(cfg)
 
-    logger.info(f"EFADT API ready | Buildings: {list(building_cfg.keys())}")
+    logger.info(f"XFADT API ready | Buildings: {list(building_cfg.keys())}")
     yield
 
-    logger.info("EFADT API shutting down.")
+    logger.info("XFADT API shutting down.")
 
 
 app = FastAPI(
-    title="EFADT — Smart Campus Resource Optimizer",
+    title="XFADT — Smart Campus Resource Optimizer",
     description="Federated Agentic Digital Twin for Campus Energy & Comfort Management",
     version="1.0.0",
     lifespan=lifespan,
@@ -173,7 +173,7 @@ class SystemStatus(BaseModel):
 @app.get("/health", tags=["System"])
 async def health():
     """Health check endpoint."""
-    return {"status": "healthy", "service": "EFADT"}
+    return {"status": "healthy", "service": "XFADT"}
 
 
 @app.get("/status", response_model=SystemStatus, tags=["System"])
@@ -196,7 +196,7 @@ async def list_buildings():
 @app.post("/decide", response_model=DecisionResponse, tags=["Agent"])
 async def get_decision(req: DecisionRequest):
     """
-    Run one EFADT decision cycle for a building.
+    Run one XFADT decision cycle for a building.
 
     Given a sensor reading and occupancy forecast, returns:
     - Optimal HVAC setpoint/power

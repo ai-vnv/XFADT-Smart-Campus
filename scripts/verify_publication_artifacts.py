@@ -36,7 +36,7 @@ def check_json_metrics(path):
 
 def main():
     print("======================================================")
-    print("   EFADT Publication Artifacts Verification")
+    print("   XFADT Publication Artifacts Verification")
     print("======================================================")
     
     missing = False

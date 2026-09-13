@@ -1,7 +1,7 @@
 """
-EFADT — Full Experiment Runner
+XFADT — Full Experiment Runner
 ================================
-Runs the complete EFADT experiment pipeline:
+Runs the complete XFADT experiment pipeline:
   1. Generate synthetic dataset
   2. Run FL simulation (or load checkpoints)
   3. Evaluate all ablation variants
@@ -87,7 +87,7 @@ def step_evaluate(checkpoint_dir: str, data_dir: str, test_months: list, seed: i
 
 
 def main():
-    parser = argparse.ArgumentParser(description="EFADT full experiment runner")
+    parser = argparse.ArgumentParser(description="XFADT full experiment runner")
     parser.add_argument("--quick", action="store_true", help="Quick mode: 3 buildings, 5 rounds, 14 days")
     parser.add_argument("--full", action="store_true", help="Full mode: 12 buildings, 100 rounds, 365 days")
     parser.add_argument("--eval-only", action="store_true", help="Skip data gen + training")

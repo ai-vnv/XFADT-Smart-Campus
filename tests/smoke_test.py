@@ -1,5 +1,5 @@
 """
-EFADT — Smoke Test Suite
+XFADT — Smoke Test Suite
 ==========================
 Quick end-to-end validation of all critical imports, data flow,
 and pipeline initialization. Runs in under 60 seconds.
@@ -123,12 +123,12 @@ def test_digital_twin_simulation():
 
 def test_agent_decision():
     """Verify agent decision cycle runs end-to-end."""
-    from agent.optimizer import EFADTAgent
+    from agent.optimizer import XFADTAgent
     from digital_twin.simulator import DigitalTwinSimulator
     from digital_twin.thermal_model import BuildingThermalParams, ThermalState
     params = BuildingThermalParams(alpha=0.0018, beta=0.011, gamma=0.009)
     sim = DigitalTwinSimulator("B01", params=params, H=6, o_max=80, P_cap=25.0)
-    agent = EFADTAgent("B01", sim)
+    agent = XFADTAgent("B01", sim)
     state = ThermalState(T_in=27.0, T_out=40.0, Q_hvac=0.0, occupancy=60)
     occ_forecast = np.full(6, 60.0)
     best_action, all_scores, utility = agent.decide(state, occ_forecast)
@@ -159,7 +159,7 @@ def test_trust_scorer():
     assert 0.0 <= result.tau <= 1.0
 
 
-def test_audit_logger(tmp_dir="/tmp/efadt_smoke_audit"):
+def test_audit_logger(tmp_dir="/tmp/xfadt_smoke_audit"):
     """Verify tamper-evident audit log write and verify."""
     import os
     from xai.audit_logger import JSONLAuditLogger
@@ -224,7 +224,7 @@ def main():
     ]
 
     print("\n" + "=" * 70)
-    print("  EFADT Smoke Test Suite")
+    print("  XFADT Smoke Test Suite")
     print("=" * 70)
 
     results = []

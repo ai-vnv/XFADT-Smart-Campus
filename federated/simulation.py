@@ -1,5 +1,5 @@
 """
-EFADT — Flower Simulation Runner
+XFADT — Flower Simulation Runner
 ==================================
 Runs the full federated learning simulation using Flower's simulation API.
 No network connections required — all clients run in-process.
@@ -77,7 +77,7 @@ def run_simulation(
     seed: int = 42,
 ) -> dict:
     """
-    Run the EFADT federated simulation.
+    Run the XFADT federated simulation.
 
     Parameters
     ----------
@@ -112,10 +112,10 @@ def run_simulation(
     n_rounds = n_rounds or fl_cfg["num_rounds"]
     n_clients = len(building_data)
 
-    logger.info(f"Starting EFADT FL simulation | Rounds={n_rounds} | Buildings={n_clients} | DP={apply_dp}")
+    logger.info(f"Starting XFADT FL simulation | Rounds={n_rounds} | Buildings={n_clients} | DP={apply_dp}")
 
     tracking_uri = os.getenv("MLFLOW_TRACKING_URI", "file:./mlruns")
-    experiment_name = os.getenv("MLFLOW_EXPERIMENT_NAME", "efadt-campus")
+    experiment_name = os.getenv("MLFLOW_EXPERIMENT_NAME", "xfadt-campus")
     mlflow.set_tracking_uri(tracking_uri)
     mlflow.set_experiment(experiment_name)
 
@@ -262,7 +262,7 @@ def run_simulation(
 def main():
     from typing import Optional
 
-    parser = argparse.ArgumentParser(description="Run EFADT FL simulation")
+    parser = argparse.ArgumentParser(description="Run XFADT FL simulation")
     parser.add_argument("--config", default="configs/hyperparams.yaml")
     parser.add_argument("--building-config", default="configs/building_params.yaml")
     parser.add_argument("--data-dir", default="data/raw")
@@ -291,7 +291,7 @@ def main():
     )
 
     print("\n" + "=" * 60)
-    print("EFADT FL Simulation Complete")
+    print("XFADT FL Simulation Complete")
     print("=" * 60)
     print(f"Convergence round:  {summary.get('convergence_round', 'Not reached')}")
     print(f"Final global MAE:   {summary.get('final_mae', 'N/A'):.3f} persons")

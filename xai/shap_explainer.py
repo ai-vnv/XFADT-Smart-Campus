@@ -1,5 +1,5 @@
 """
-EFADT — SHAP Explainer (Proxy-Based)
+XFADT — SHAP Explainer (Proxy-Based)
 ======================================
 Computes SHAP feature attributions for the occupancy forecast.
 

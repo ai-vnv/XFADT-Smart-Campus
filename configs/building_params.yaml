@@ -1,5 +1,5 @@
 # ============================================================
-# EFADT Per-Building Thermal Parameters
+# XFADT Per-Building Thermal Parameters
 # RC Model: dT_in/dt = alpha*(T_out - T_in) + beta*Q_HVAC + gamma*kappa*occ
 # ============================================================
 # Parameters chosen as physically-motivated design constants representing

@@ -1,5 +1,5 @@
 # ============================================================
-# EFADT — Smart Campus Resource Optimization
+# XFADT — Smart Campus Resource Optimization
 # Core Dependencies
 # ============================================================
 

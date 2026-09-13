@@ -1,5 +1,5 @@
 """
-EFADT — Evaluation Metrics
+XFADT — Evaluation Metrics
 ============================
 Implements all primary evaluation metrics from Section 7 and 8:
 
@@ -21,8 +21,8 @@ from scipy.stats import spearmanr
 
 
 @dataclass
-class EFADTMetrics:
-    """Bundle of all EFADT primary evaluation metrics."""
+class XFADTMetrics:
+    """Bundle of all XFADT primary evaluation metrics."""
     ERR: float        # Energy Reduction Ratio (%)
     CCS: float        # Comfort Compliance Score [0, 1]
     CSS: float        # Crowd Safety Score [0, 1]
@@ -62,7 +62,7 @@ def energy_reduction_ratio(
     baseline_energy : np.ndarray
         Energy consumption under the baseline policy (kWh per timestep).
     system_energy : np.ndarray
-        Energy consumption under EFADT (kWh per timestep).
+        Energy consumption under XFADT (kWh per timestep).
 
     Returns
     -------
@@ -182,13 +182,13 @@ def compute_all_metrics(
     proxy_preds: Optional[np.ndarray] = None,
     lstm_preds: Optional[np.ndarray] = None,
     o_max: float = 80.0,
-) -> EFADTMetrics:
+) -> XFADTMetrics:
     """
-    Compute the complete EFADT metric suite.
+    Compute the complete XFADT metric suite.
 
     Returns
     -------
-    EFADTMetrics
+    XFADTMetrics
     """
     err = energy_reduction_ratio(baseline_energy, system_energy)
     ccs = comfort_compliance_score(T_in_series, co2_series)
@@ -197,21 +197,21 @@ def compute_all_metrics(
     tau = float(np.mean(trust_scores)) if len(trust_scores) > 0 else 0.0
     shf = shap_fidelity(proxy_preds, lstm_preds) if proxy_preds is not None and lstm_preds is not None else 0.0
 
-    return EFADTMetrics(
+    return XFADTMetrics(
         ERR=err, CCS=ccs, CSS=css, MAE=mae, tau=tau, SHF=shf,
         n_samples=len(occupancy_true),
     )
 
 
 def compute_metrics_with_confidence(
-    metrics_runs: list[EFADTMetrics],
+    metrics_runs: list[XFADTMetrics],
 ) -> dict:
     """
     Compute mean ± std across 5 experimental runs (as reported in paper).
 
     Parameters
     ----------
-    metrics_runs : list[EFADTMetrics]
+    metrics_runs : list[XFADTMetrics]
         Results from each of 5 seeds.
 
     Returns
@@ -284,7 +284,7 @@ if __name__ == "__main__":
     rng = np.random.default_rng(42)
     n = 10_000
 
-    # Simulate EFADT performance
+    # Simulate XFADT performance
     baseline_E = rng.uniform(0.5, 1.0, n)
     system_E = baseline_E * (1 - 0.347)    # ~34.7% energy reduction
     T_in = rng.normal(22.5, 1.2, n)        # mostly in comfort band
@@ -299,4 +299,4 @@ if __name__ == "__main__":
         baseline_E, system_E, T_in, co2, occ_true, occ_pred,
         np.clip(trust, 0, 1), proxy_p, lstm_p,
     )
-    print(f"EFADT Metrics: {metrics}")
+    print(f"XFADT Metrics: {metrics}")

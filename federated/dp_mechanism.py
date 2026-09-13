@@ -1,7 +1,7 @@
 """
-EFADT — Differential Privacy Mechanism
+XFADT — Differential Privacy Mechanism
 =========================================
-Implements (ε, δ)-DP gradient perturbation per EFADT Section 5.3:
+Implements (ε, δ)-DP gradient perturbation per XFADT Section 5.3:
 
     Δθ̃_b = clip(Δθ_b, C) + N(0, σ²C²I)
 
@@ -240,7 +240,7 @@ def estimate_total_privacy_budget(
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
 
-    # Example: compute sigma for EFADT's DP setting
+    # Example: compute sigma for XFADT's DP setting
     eps, dlt = 1.0, 1e-5
     sigma = compute_sigma(eps, dlt)
     print(f"DP parameters: ε={eps}, δ={dlt} → σ={sigma:.4f}")

@@ -1,5 +1,5 @@
 """
-EFADT — Digital Twin RC Thermal Model
+XFADT — Digital Twin RC Thermal Model
 =======================================
 Implements the first-order RC thermal model for per-building
 digital twin simulation used during agent decision-making:
