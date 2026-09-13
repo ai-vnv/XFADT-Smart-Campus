@@ -27,7 +27,10 @@ if hasattr(sys.stdout, "reconfigure"):
     except Exception:
         pass
 
-import argparse, json, logging, os
+import argparse
+import json
+import logging
+import os
 import numpy as np
 import pandas as pd
 import torch
@@ -118,7 +121,6 @@ def evaluate_single_variant(
     all_T_in, all_co2, all_occ = [], [], []
     all_baseline_E, all_system_E = [], []
     all_trust = []
-    all_proxy_preds, all_lstm_preds = [], []
     all_o_max_true = []
 
     agent_cfg = config["agent"]

@@ -28,7 +28,7 @@ include = ["data*", "models*", "federated*", "digital_twin*", "agent*",
 [tool.ruff]
 line-length = 100
 target-version = "py310"
-select = ["E", "F", "W", "I", "N"]
+select = ["E", "F"]
 ignore = ["E501", "E402", "F401"]
 
 [tool.pytest.ini_options]

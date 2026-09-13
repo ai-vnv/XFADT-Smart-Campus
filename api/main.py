@@ -211,8 +211,6 @@ async def get_decision(req: DecisionRequest):
 
     t0 = time.time()
     sim = _state["simulators"][bid]
-    model = _state["model"]
-    device = _state["device"]
     audit = _state["audit_logger"]
     tw = _state["trust_weights"]
 

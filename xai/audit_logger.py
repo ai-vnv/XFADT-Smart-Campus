@@ -198,7 +198,6 @@ class JSONLAuditLogger:
         list[dict] : Matching audit records.
         """
         records = []
-        pattern = f"{building_id or '*'}_{date_str or '*'}.jsonl"
 
         for log_file in sorted(Path(self.log_dir).glob("*.jsonl")):
             if building_id and not log_file.name.startswith(building_id):

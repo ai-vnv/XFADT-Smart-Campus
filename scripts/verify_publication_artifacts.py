@@ -55,12 +55,12 @@ def main():
     if len(pts) > 0:
         print(f"[OK] Found {len(pts)} PyTorch checkpoints")
     else:
-        print(f"[WARNING] PyTorch checkpoints missing or not yet generated.")
+        print("[WARNING] PyTorch checkpoints missing or not yet generated.")
         
     if len(pkls) > 0:
         print(f"[OK] Found {len(pkls)} scaler pickles")
     else:
-        print(f"[WARNING] Scaler pickles missing or not yet generated.")
+        print("[WARNING] Scaler pickles missing or not yet generated.")
 
     # Check metrics
     for p in ["results/ablation/full_results.json", "results/ablation/multi_seed_results.json"]:

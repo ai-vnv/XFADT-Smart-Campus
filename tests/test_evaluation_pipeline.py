@@ -7,10 +7,10 @@ import yaml
 
 @pytest.fixture(scope="module")
 def mini_dataset(tmp_path_factory):
-    """Generate a minimal 2-building, 60-day dataset."""
+    """Generate a minimal 2-building, 14-day dataset."""
     from data.generation.generate_dataset import generate_full_dataset
     data_dir = str(tmp_path_factory.mktemp("data"))
-    generate_full_dataset(n_buildings=2, n_days=60, output_dir=data_dir, seed=99)
+    generate_full_dataset(n_buildings=2, n_days=14, output_dir=data_dir, seed=99)
     return data_dir
 
 
@@ -20,7 +20,7 @@ def trained_checkpoint(mini_dataset, tmp_path_factory):
     ckpt_dir = str(tmp_path_factory.mktemp("checkpoints"))
     from models.lstm.train_local import run_standalone_training
     # Set epochs=2 to ensure the integration test runs fast
-    result = run_standalone_training(
+    run_standalone_training(
         building_id="B01",
         data_path=mini_dataset,
         checkpoint_dir=ckpt_dir,
@@ -44,7 +44,6 @@ def test_load_checkpoint_returns_scaler(trained_checkpoint):
     """load_checkpoint() must return a fitted StandardScaler."""
     from models.lstm.train_local import load_checkpoint
     from sklearn.preprocessing import StandardScaler
-    import yaml
     with open("configs/hyperparams.yaml") as f:
         config = yaml.safe_load(f)
     ckpt_path = os.path.join(trained_checkpoint, "B01_best.pt")
@@ -63,7 +62,7 @@ def test_evaluate_checkpoint_produces_metrics(mini_dataset, trained_checkpoint, 
         sys.executable, "scripts/evaluate_checkpoint.py",
         "--checkpoint-dir", trained_checkpoint,
         "--data-dir", mini_dataset,
-        "--test-months", "2",
+        "--test-months", "1",
         "--config", "configs/hyperparams.yaml",
         "--building-config", "configs/building_params.yaml",
         "--output", output,

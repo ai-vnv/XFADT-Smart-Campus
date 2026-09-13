@@ -113,9 +113,9 @@ if auto_refresh:
 
 st.sidebar.markdown("---")
 st.sidebar.markdown("**System Config**")
-st.sidebar.markdown(f"ε = 1.0 | δ = 1e-5 | σ ≈ 4.845")
-st.sidebar.markdown(f"FL Rounds: 100 | Buildings: 12")
-st.sidebar.markdown(f"λ_e=0.5 | λ_c=0.35 | λ_d=0.15")
+st.sidebar.markdown("ε = 1.0 | δ = 1e-5 | σ ≈ 4.845")
+st.sidebar.markdown("FL Rounds: 100 | Buildings: 12")
+st.sidebar.markdown("λ_e=0.5 | λ_c=0.35 | λ_d=0.15")
 
 
 # ── Main ─────────────────────────────────────────────────────────────────────
@@ -138,7 +138,7 @@ c3.metric("🔒 Trust Score τ", f"{bld['trust_score']:.3f}",
           delta=f"{'⚠ Low' if bld['trust_score'] < 0.8 else '✓ OK'}",
           delta_color="inverse" if bld["trust_score"] < 0.8 else "normal")
 c4.metric("⚡ Energy Saved", f"{bld['energy_saved_pct']:.1f}%",
-          delta=f"vs rule-based baseline")
+          delta="vs rule-based baseline")
 c5.metric("😊 Comfort Score", f"{bld['comfort_score']:.3f}",
           delta=f"{'⚠ Below target' if bld['comfort_score'] < 0.9 else '✓ On target'}")
 
@@ -292,6 +292,6 @@ except (FileNotFoundError, KeyError, TypeError, AttributeError):
 
 st.caption(
     "XFADT — Explainable Federated Agentic Digital Twin | "
-    f"ε=1.0, δ=1e-5 | σ=4.845 | 12 Buildings | FL Rounds: 100 | "
+    "ε=1.0, δ=1e-5 | σ=4.845 | 12 Buildings | FL Rounds: 100 | "
     + _footer_metrics
 )

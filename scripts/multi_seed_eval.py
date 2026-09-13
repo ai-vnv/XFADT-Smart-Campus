@@ -30,7 +30,6 @@ logger = logging.getLogger(__name__)
 def run_one_seed(seed: int, data_dir: str, n_buildings: int | None, n_rounds: int | None, extra_args: list) -> dict:
     """Train FL models (with and without DP) and run evaluate_checkpoint.py for one seed."""
     import os
-    import subprocess
     
     ckpt_dir = f"models/lstm/checkpoints_seed{seed}"
     ckpt_dir_no_dp = f"models/lstm/checkpoints_no_dp_seed{seed}"
@@ -203,8 +202,10 @@ def main():
     print("-" * 90)
     for variant, metrics in aggregated.items():
         def fmt(m):
-            v = m.get("mean"); s = m.get("std")
-            if v is None: return "      —"
+            v = m.get("mean")
+            s = m.get("std")
+            if v is None:
+                return "      —"
             return f"{v:.3f}+/-{s:.3f}"
         print(f"{variant:<28} {fmt(metrics['ERR']):>12} {fmt(metrics['CCS']):>10} "
               f"{fmt(metrics['CSS']):>10} {fmt(metrics['MAE']):>14}")

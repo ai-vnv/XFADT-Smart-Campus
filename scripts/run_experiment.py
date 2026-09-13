@@ -46,7 +46,8 @@ def step_generate_data(n_buildings: int, n_days: int, seed: int) -> None:
 
 
 def step_run_fl(n_buildings: int, n_rounds: int, apply_dp: bool, seed: int) -> dict:
-    import torch, pandas as pd
+    import pandas as pd
+    import torch
     logger.info(f"Step 2: Running FL simulation ({n_buildings} buildings, {n_rounds} rounds, DP={apply_dp})...")
     with open("configs/hyperparams.yaml") as f:
         config = yaml.safe_load(f)
@@ -73,8 +74,9 @@ def step_run_fl(n_buildings: int, n_rounds: int, apply_dp: bool, seed: int) -> d
 
 def step_evaluate(checkpoint_dir: str, data_dir: str, test_months: list, seed: int, n_buildings: int) -> None:
     logger.info("Step 3: Evaluating from trained checkpoints...")
-    import subprocess, sys
-    result = subprocess.run([
+    import subprocess
+    import sys
+    subprocess.run([
         sys.executable, "scripts/evaluate_checkpoint.py",
         "--checkpoint-dir", checkpoint_dir,
         "--data-dir", data_dir,

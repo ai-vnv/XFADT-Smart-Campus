@@ -160,6 +160,6 @@ if __name__ == "__main__":
     best_action, all_scores, utility = agent.decide(state, occ_forecast)
     print(f"\nSelected action: {best_action}")
     print(f"Utility: {utility:.4f}")
-    print(f"\nTop 5 actions by utility:")
+    print("\nTop 5 actions by utility:")
     for row in utility_summary(all_scores, agent.weights)[:5]:
         print(f"  {row}")

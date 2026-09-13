@@ -162,7 +162,6 @@ def evaluate_centralized(
     from models.lstm.train_local import FEATURE_COLUMNS, TARGET_COLUMN, prepare_data
     from models.lstm.architecture import build_model, CampusDataset
     from torch.utils.data import DataLoader
-    from sklearn.preprocessing import StandardScaler
 
     torch.manual_seed(seed)
     np.random.seed(seed)
@@ -231,6 +230,8 @@ def evaluate_centralized(
             loss = criterion(preds.squeeze(-1), yb.to(device))
             loss.backward()
             optimizer.step()
+        if (epoch + 1) % 10 == 0 or epoch == epochs - 1:
+            logger.info(f"  Centralized training epoch {epoch+1}/{epochs} | loss: {loss.item():.4f}")
 
     # Evaluate on test split
     import yaml
@@ -431,7 +432,8 @@ PAPER_RESULTS = _load_results()
 
 def print_ablation_table() -> None:
     """Print the ablation results as a formatted table."""
-    import os, json
+    import json
+    import os
     ms_path = os.path.join(os.path.dirname(__file__), "..", "results", "ablation", "multi_seed_results.json")
     if os.path.exists(ms_path):
         with open(ms_path) as f:
@@ -442,8 +444,10 @@ def print_ablation_table() -> None:
         print("-" * 100)
         for variant, metrics in aggregated.items():
             def fmt(m):
-                v = m.get("mean"); s = m.get("std")
-                if v is None: return "        —"
+                v = m.get("mean")
+                s = m.get("std")
+                if v is None:
+                    return "        —"
                 return f"{v:.3f}+/-{s:.3f}"
             n = metrics["MAE"].get("n", "?")
             print(f"{variant:<28} {fmt(metrics['ERR']):>14} {fmt(metrics['CCS']):>12} "

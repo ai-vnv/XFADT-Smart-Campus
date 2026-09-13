@@ -90,7 +90,6 @@ def build_action_space(
 
     # Generate HVAC power candidates
     hvac_powers = np.arange(hvac_min_kw, hvac_max_kw + hvac_step_kw, hvac_step_kw)
-    setpoints = np.arange(setpoint_min, setpoint_max + setpoint_step, setpoint_step)
 
     # Simple mapping: power → setpoint (linear interpolation)
     for Q in hvac_powers:

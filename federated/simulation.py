@@ -15,6 +15,7 @@ import argparse
 import logging
 import os
 from pathlib import Path
+from typing import Optional
 
 import flwr as fl
 import mlflow

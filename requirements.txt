@@ -8,6 +8,7 @@ torch==2.1.2
 torchvision==0.16.2
 flwr[simulation]==1.6.0
 opacus==1.4.0
+protobuf>=3.20.3,<5.0.0
 
 # Data Science
 numpy==1.26.3

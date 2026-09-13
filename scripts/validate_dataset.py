@@ -48,7 +48,7 @@ def main():
         manifest = json.load(f)
 
     print("\n" + "=" * 70)
-    print(f"Dataset Validation Report")
+    print("Dataset Validation Report")
     print(f"Seed: {manifest['seed']} | Buildings: {manifest['n_buildings']} | Days: {manifest['n_days']}")
     print("=" * 70)
 
