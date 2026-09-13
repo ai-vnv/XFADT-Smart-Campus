@@ -1,23 +1,42 @@
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+*$py.class
 *.pyo
 *.pyd
 .Python
-*.egg-info/
+
+# Distribution / packaging
 dist/
 build/
+*.egg-info/
+*.egg
 .eggs/
 
-# Data
+# Virtual Environments
+.env
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Data directories (generated datasets & runtime logs)
 data/raw/*.parquet
-data/processed/
 data/scenarios/*.parquet
 data/audit/*.jsonl
 data/audit/*.db
+data/audit/test/
+data/processed/*
+!data/processed/.gitkeep
+!data/audit/.gitkeep
+!data/raw/dataset_manifest.json
 
 # Models & Checkpoints
 models/lstm/checkpoints/*.pt
 models/lstm/checkpoints/*.pkl
+!models/lstm/checkpoints/.gitkeep
 models/lstm/checkpoints_seed*/
 models/lstm/checkpoints_no_dp_seed*/
 models/checkpoints_seed*/
@@ -25,45 +44,68 @@ models/checkpoints_no_dp_seed*/
 
 # Logs and Caches
 *.log
+*.log.*
+logs/
 .ruff_cache/
+.mypy_cache/
+.cache/
 
-# Environment
-.env
-.venv/
-venv/
-env/
+# Ray / Flower simulation
+.ray/
+ray_results/
 
-# Jupyter
+# Jupyter Notebook checkpoints
 .ipynb_checkpoints/
+*-checkpoint.ipynb
 *.ipynb~
 
-# IDE
+# IDEs and Editors
 .idea/
 .vscode/
 *.swp
 *.swo
+*~
+*.sublime-project
+*.sublime-workspace
 
-# Testing
+# Testing and Coverage
 .pytest_cache/
 .coverage
+.coverage.*
 htmlcov/
 *.coveragerc
+coverage.xml
+nosetests.xml
 
-# MLflow
+# MLflow & Experiment tracking
 mlruns/
 mlflow.db
+mlflow.db-journal
+
+# Streamlit
+.streamlit/secrets.toml
 
 # Docker
 .docker/
 
-# OS
+# OS specific files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+[Dd]esktop.ini
 
-# Distribution
+# Archives & Temporary files
 *.zip
 *.tar.gz
+*.tmp
+*.bak
 
 # Results (large experiment outputs — not committed)
-results/seeds/
+results/seeds/*
+!results/seeds/.gitkeep
 results/checkpoints/
+results/temp/
