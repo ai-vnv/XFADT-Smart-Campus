@@ -1,12 +1,12 @@
-# EFADT System Architecture
+# XFADT System Architecture
 
-This document describes the architectural design, data flows, and module interactions of the **Explainable Federated Agentic Digital Twin (EFADT)** framework.
+This document describes the architectural design, data flows, and module interactions of the **Explainable Federated Agentic Digital Twin (XFADT)** framework.
 
 ---
 
 ## 🔄 The 30-Second Closed Loop
 
-EFADT operates in a continuous, 30-second decision cycle designed to optimize building resource consumption (HVAC power), thermal comfort, indoor air quality ($CO_2$), and crowd safety.
+XFADT operates in a continuous, 30-second decision cycle designed to optimize building resource consumption (HVAC power), thermal comfort, indoor air quality ($CO_2$), and crowd safety.
 
 ```
 IoT Sensors → FL-LSTM Forecast → Digital Twin Simulation → MOO Agent → HVAC Actuation
@@ -29,7 +29,7 @@ IoT Sensors → FL-LSTM Forecast → Digital Twin Simulation → MOO Agent → H
 ## 🏗️ Component Breakdown
 
 ```
-efadt-smart-campus/
+xfadt-smart-campus/
 ├── federated/             # Federated Learning (FL) with differential privacy
 ├── digital_twin/          # RC thermal simulation & Comfort evaluation
 ├── agent/                 # Decision optimization & Multi-objective utility

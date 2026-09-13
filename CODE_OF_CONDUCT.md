@@ -2,7 +2,7 @@
 
 ## Our Pledge
 
-We pledge to make participation in EFADT a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity, level of experience, nationality, personal appearance, race, religion, or sexual identity.
+We pledge to make participation in XFADT a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity, level of experience, nationality, personal appearance, race, religion, or sexual identity.
 
 ## Our Standards
 

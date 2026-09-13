@@ -1,7 +1,6 @@
-# EFADT — Explainable Federated Agentic Digital Twin
+# XFADT — Explainable Federated Agentic Digital Twin
 
-[![CI](https://github.com/your-org/efadt-smart-campus/actions/workflows/ci.yml/badge.svg)](https://github.com/your-org/efadt-smart-campus/actions)
-[![Coverage](https://codecov.io/gh/your-org/efadt-smart-campus/badge.svg)](https://codecov.io/gh/your-org/efadt-smart-campus)
+[![CI](https://github.com/ai-vnv/XFADT-Smart-Campus/actions/workflows/ci.yml/badge.svg)](https://github.com/ai-vnv/XFADT-Smart-Campus/actions)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![FastAPI](https://img.shields.io/badge/API-FastAPI-009688.svg)](https://fastapi.tiangolo.com)
@@ -15,8 +14,8 @@
 
 ### 1. Install Dependencies
 ```bash
-git clone https://github.com/aliakarma/efadt-smart-campus.git
-cd efadt-smart-campus
+git clone https://github.com/ai-vnv/XFADT-Smart-Campus.git
+cd xfadt-smart-campus
 pip install -r requirements.txt
 ```
 
@@ -25,7 +24,7 @@ pip install -r requirements.txt
 python -m data.generation.generate_dataset --config configs/hyperparams.yaml --n-buildings 12 --n-days 365 --seed 42
 ```
 
-### 3. Run FL Simulation
+### 3. Run Federated Training
 ```bash
 python -m federated.simulation --n-rounds 100
 ```
@@ -36,7 +35,7 @@ python -m federated.simulation --n-rounds 100
 
 The system coordinates a 30-second closed-loop control cycle integrating federated predictions, thermal simulations, multi-objective optimization decisions, trust scoring, and an immutable audit trail.
 
-For a detailed explanation of the internal system components, data flow diagrams, and design, refer to [architecture.md](file:///c:/Users/Ali%20Akarma/Documents/GitHub/EFADT-Smart-Campus/docs/architecture.md).
+For a detailed explanation of the internal system components, data flow diagrams, and design, refer to [architecture.md](docs/architecture.md).
 
 ---
 
@@ -95,7 +94,7 @@ Below is the multi-seed evaluation results table compiled across seeds `[42, 0, 
 <!-- RESULTS_TABLE_START -->
 | Variant | ERR% | CCS | CSS | MAE (persons) |
 |---------|------|-----|-----|---------------|
-| EFADT (Full) | 44.084±0.000 | 0.427±0.000 | 0.999±0.000 | 15.952±1.533 |
+| XFADT (Full) | 44.084±0.000 | 0.427±0.000 | 0.999±0.000 | 15.952±1.533 |
 | -XAI | 44.084±0.000 | 0.427±0.000 | 0.999±0.000 | 15.952±1.533 |
 | -DT-WIF | 96.300±0.000 | 0.969±0.000 | 0.999±0.000 | 7.414±0.000 |
 | -DP | 43.020±0.183 | 0.427±0.000 | 0.999±0.000 | 17.132±1.383 |
@@ -110,7 +109,7 @@ Below is the multi-seed evaluation results table compiled across seeds `[42, 0, 
 
 ## Privacy Guarantee
 
-EFADT applies $(\varepsilon=1.0, \delta=1\times10^{-5})$-DP **per FL round** using the Gaussian mechanism:
+XFADT applies $(\varepsilon=1.0, \delta=1\times10^{-5})$-DP **per FL round** using the Gaussian mechanism:
 - **Noise Multiplier**: $\sigma = 4.845$ (analytically computed: $\sqrt{2\ln(1.25/\delta)}/\varepsilon$)
 - **Gradient Clipping**: $C = 1.0$
 - **Composed Total Privacy Cost**: After 100 FL rounds, the composed privacy budget under Rényi DP is $\varepsilon_{\text{total}} \approx 11.15$.
@@ -204,10 +203,10 @@ Key parameters tracked include `apply_dp`, `epsilon`, `sigma`, `local_epochs`, a
 
 ## Citing This Work
 
-If you use EFADT in your research, please cite:
+If you use XFADT in your research, please cite:
 ```bibtex
-@article{efadt2026,
-  title   = {EFADT: Explainable Federated Agentic Digital Twin for Smart Campus Resource Optimization},
+@article{xfadt2026,
+  title   = {XFADT: Explainable Federated Agentic Digital Twin for Smart Campus Resource Optimization},
   author  = {},
   journal = {},
   year    = {2026}

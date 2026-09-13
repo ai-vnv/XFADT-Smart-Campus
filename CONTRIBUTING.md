@@ -1,12 +1,12 @@
-# Contributing to EFADT
+# Contributing to XFADT
 
-Thank you for your interest in contributing to EFADT!
+Thank you for your interest in contributing to XFADT!
 
 ## Development Setup
 
 ```bash
-git clone https://github.com/your-org/efadt-smart-campus.git
-cd efadt-smart-campus
+git clone https://github.com/ai-vnv/XFADT-Smart-Campus.git
+cd xfadt-smart-campus
 pip install -r requirements.txt
 pip install ruff pytest pytest-asyncio
 ```
